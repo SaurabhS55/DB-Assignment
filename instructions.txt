@@ -1,0 +1,17 @@
+1. create a network called assignment
+   docker network create assignment
+
+2. build a apache docker file in assignment n/w
+   docker build -t php-conatainer -f Dockerfile.php .
+
+3. run php-conrainer image to create a conatainer
+    docker run -d -p 8080:80 --name php-container --network assignment php-container
+
+4. run mysql image
+   docker run -d --name php-container --network assignment -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=mydb mysql:latest
+
+5. inspect mysql-conatainer and copy its ip address
+   docker inspect mysql-conatainer
+
+6. now open ms azure data studio and create new connection by entering my-sql ip and uname and password
+7. create db Details
